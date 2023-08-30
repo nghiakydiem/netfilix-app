@@ -1,0 +1,170 @@
+.startScreen {
+    width: 100%;
+    height: fit-content;
+}
+
+.startScreen__background {
+    position: relative;
+    width: 100%;
+    height: 94vh;
+    background: url("https://assets.nflxext.com/ffe/siteui/vlv3/530fc327-2ddb-4038-a3f0-2da2d9ccede1/527c02be-c6f5-454c-94af-6336a3d2d4eb/VN-en-20230619-popsignuptwoweeks-perspective_alpha_website_small.jpg");
+    background-size: cover;
+}
+
+.startScreen__form {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white !important;
+    background-color: transparent;
+    z-index: 100;
+}
+
+.startScreen__form>h1 {
+    margin-bottom: 1.25rem;
+    font-size: 3rem;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.startScreen__form>h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.startScreen__form>h3 {
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+.startScreen__input {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.startScreen__input>form {
+    position: relative;
+    width: 36.625rem;
+    height: 3.5rem;
+}
+
+.startScreen__input-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.startScreen__emailInput {
+    flex: 1;
+    min-height: 1rem;
+    min-width: 1rem;
+    padding: 1.5rem 1rem 0.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    border: 1px solid rgba(128, 128, 128, 0.7);
+    border-radius: 0.25rem;
+    outline: none;
+    color: white;
+    background: rgba(16, 16, 16, .7);
+}
+
+.startScreen__emailInput:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+.startScreen__emailInput.valid {
+    border: 1px solid #2bb871 !important;
+}
+
+.startScreen__emailInput.not-valid {
+    border: 1px solid #eb3942 !important;
+}
+
+.startScreen__input-content>input:focus {
+    border: 2px solid white;
+}
+
+.startScreen__input-content>label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    line-height: 1.2rem;
+    white-space: nowrap;
+    color: #ccc;
+    transition: all 250ms cubic-bezier(0.5, 0, 0.1, 1) 0s;
+}
+
+.startScreen__input-label.focus {
+    top: 0.85rem;
+    left: 1rem;
+    font-size: 0.75rem;
+}
+
+.start__getStarted {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1.5rem;
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 0.25rem;
+    color: white;
+    background: rgb(229, 9, 20);
+    cursor: pointer;
+}
+
+.login__getStarted:hover {
+    background: rgb(193, 17, 25);
+    transition-timing-function: cubic-bezier(0.5, 0, 0.1, 1);
+}
+
+.startScreen__input-valid {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    margin-top: 0.4rem;
+    color: rgb(235, 57, 66);
+}
+
+.startScreen__input-valid>svg {
+    fill: currentcolor;
+    font-size: 1rem;
+    color: rgb(235, 57, 66);
+}
+
+.startScreen__gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.9) 0,
+            rgba(0, 0, 0, 0.4) 40%,
+            rgba(0, 0, 0, 0.9) 120%);
+}
+
+.startScreen__gradient.signIn {
+    height: 112vh;
+}
+
+.line__bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: 0.565rem solid #292929;
+}

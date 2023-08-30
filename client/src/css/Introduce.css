@@ -1,0 +1,117 @@
+.introduce {
+    padding-top: 3rem;
+    background-color: black;
+    border-bottom: 0.565rem solid #292929 !important;
+}
+
+.introduce__kid,
+.introduce__enjoy,
+.introduce__download,
+.introduce__watch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 36.53125rem;
+    margin: 0rem 10.9375rem;
+}
+
+.introduce__kid-right,
+.introduce__download-right,
+.introduce__enjoy-left,
+.introduce__watch-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 8rem;
+    text-align: left;
+    color: white;
+}
+
+.introduce__kid-left,
+.introduce__download-left {
+    position: relative;
+}
+
+.introduce__download-stranger {
+    position: absolute;
+    top: 20rem;
+    left: 18.235rem;
+    display: flex;
+    align-items: center;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 5.9375rem;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.75rem;
+    box-shadow: 0 0 2em 0 rgba(0, 0, 0, 1);
+    background-color: black;
+    z-index: 20;
+}
+
+.introduce__download-stranger>img {
+    width: 4.5rem;
+    height: 100%;
+    object-fit: cover;
+}
+
+.introduce__stranger-title {
+    text-align: left;
+    color: white;
+}
+
+.introduce__stranger-title {
+    margin-left: 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.introduce__stranger-title>span {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #0071eb;
+}
+
+.introduce__title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+}
+
+.introduce__description {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.introduce__enjoy-right,
+.introduce__watch-right {
+    position: relative;
+}
+
+.introduce__img {
+    position: absolute;
+    width: 36.375rem;
+    height: 27.28125rem;
+    z-index: 10;
+}
+
+.introduce__enjoy-video {
+    position: absolute;
+    top: 5.625rem;
+    left: 5rem;
+    width: 26.35rem;
+    height: 15rem;
+}
+
+.introduce__watch-video {
+    position: absolute;
+    top: 2.65rem;
+    left: 5.85rem;
+    width: 23.35rem;
+    height: 13rem;
+}
+
+.introduce__enjoy-video>video,
+.introduce__watch-video>video {
+    width: 100%;
+    height: 100%;
+}

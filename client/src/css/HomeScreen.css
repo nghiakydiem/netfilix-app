@@ -1,0 +1,11 @@
+.homeScreen {
+  position: relative;
+  flex-direction: column;
+  background-color: #171717;
+}
+
+.homeScreen__content {
+  position: absolute;
+  top: 68vh;
+  left: 0;
+}
