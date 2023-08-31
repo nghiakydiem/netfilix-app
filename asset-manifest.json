@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/netfilix-app/static/css/main.0984d304.css",
+    "main.js": "/netfilix-app/static/js/main.d882931b.js",
+    "static/js/787.5df56052.chunk.js": "/netfilix-app/static/js/787.5df56052.chunk.js",
+    "static/media/NetflixSans_W_Blk.woff2": "/netfilix-app/static/media/NetflixSans_W_Blk.29e6d806de0efce97a15.woff2",
+    "static/media/NetflixSans_W_Md.woff2": "/netfilix-app/static/media/NetflixSans_W_Md.a7eb753e6dc0059a0b06.woff2",
+    "static/media/NetflixSans_W_Rg.woff2": "/netfilix-app/static/media/NetflixSans_W_Rg.0f89544675950f86a3c9.woff2",
+    "static/media/logo.svg": "/netfilix-app/static/media/logo.814a1ccd1ad6f5660433ab31d78d94ed.svg",
+    "index.html": "/netfilix-app/index.html",
+    "main.0984d304.css.map": "/netfilix-app/static/css/main.0984d304.css.map",
+    "main.d882931b.js.map": "/netfilix-app/static/js/main.d882931b.js.map",
+    "787.5df56052.chunk.js.map": "/netfilix-app/static/js/787.5df56052.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0984d304.css",
+    "static/js/main.d882931b.js"
+  ]
+}
