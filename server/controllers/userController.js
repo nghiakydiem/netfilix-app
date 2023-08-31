@@ -1,11 +1,10 @@
 const User = require("../models/useModel");
 const bcrypt = require("bcryptjs");
-const { database } = require("../connectMongoDB");
 
 const signup = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await database.collection("users").findOne({ email });
+    const user = await User.findOne({ email });
     if (user) {
       return res.json({ message: "User already exists", status: 400 });
     }
@@ -13,9 +12,7 @@ const signup = async (req, res) => {
     const salt = bcrypt.genSaltSync(10);
     const hashPassword = await bcrypt.hashSync(password, salt);
     if (hashPassword) {
-      await database
-        .collection("users")
-        .insertOne({ email, password: hashPassword });
+      await User.create({ email, password: hashPassword });
     }
 
     return res.json({ message: "User created successfully", status: 200 });
@@ -26,9 +23,7 @@ const signup = async (req, res) => {
 
 const loginWithCookie = async (req, res) => {
   const rememberMeCookie = req.cookies.remember_me;
-  const user = await database
-    .collection("users")
-    .findOne({ rememberMe: rememberMeCookie });
+  const user = await User.findOne({ rememberMe: rememberMeCookie });
   console.log("user: ", user);
 
   if (user) {
@@ -49,7 +44,7 @@ const login = async (req, res) => {
   try {
     const { email, password, rememberMe } = req.body;
 
-    const user = await database.collection("users").findOne({ email });
+    const user = await User.findOne({ email });
     const match = await bcrypt.compare(password, user.password);
 
     if (match) {
@@ -63,7 +58,7 @@ const login = async (req, res) => {
           maxAge: 30 * 24 * 60 * 60 * 1000,
         });
 
-        await database.collection("users").findByIdAndUpdate(user._id, {
+        await User.findByIdAndUpdate(user._id, {
           rememberMe: token,
         });
       }
@@ -96,7 +91,7 @@ const getLikedMovies = async (req, res) => {
   try {
     // Check user in mongodb
     const email = req.params.email;
-    const user = await database.collection("users").findOne({ email });
+    const user = await User.findOne({ email });
 
     if (user) {
       return res.json({
@@ -117,7 +112,7 @@ const getLikedMovie = async (req, res) => {
     // CHECK USER IN MONGODB
     const email = req.params.email;
     const movieId = req.params.id;
-    const user = await database.collection("users").findOne({ email });
+    const user = await User.findOne({ email });
 
     if (user) {
       const { likedMovies } = user;
@@ -146,7 +141,7 @@ const addToLikedMovies = async (req, res) => {
   try {
     // CHECK USER IN MONGODB
     const { email, data } = req.body;
-    const user = await database.collection("users").findOne({ email });
+    const user = await User.findOne({ email });
     if (user) {
       // CHECK MOVIES LIKED IN MONGODB
       const likedMovies = user.likedMovies;
@@ -154,7 +149,7 @@ const addToLikedMovies = async (req, res) => {
         ({ id }) => id === Number(data.id),
       );
       if (!movieAlreadyLiked) {
-        await database.collection("users").findOneAndUpdate(
+        await User.findOneAndUpdate(
           user._id,
           {
             likedMovies: [...user.likedMovies, data],
@@ -181,7 +176,7 @@ const deleteLikedMovie = async (req, res) => {
     // Check user in mongodb
     const email = req.params.email;
     const movieId = req.params.id;
-    const user = await database.collection("users").findOne({ email });
+    const user = await User.findOne({ email });
 
     if (user) {
       // Check movies liked in mongodb
@@ -195,9 +190,7 @@ const deleteLikedMovie = async (req, res) => {
 
       likedMovies.splice(movieIndex, 1);
 
-      await database
-        .collection("users")
-        .findByIdAndUpdate(user._id, { likedMovies });
+      await User.findByIdAndUpdate(user._id, { likedMovies });
 
       return res.json({ status: 200, message: "Deleted success..." });
     }

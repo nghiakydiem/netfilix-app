@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
   rememberMe: {
     type: String,
     default: "",
-  }
+  },
 });
 
 module.exports = mongoose.model("users", userSchema);
