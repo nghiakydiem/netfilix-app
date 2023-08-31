@@ -54,7 +54,7 @@ const login = async (req, res) => {
 
         res.cookie("remember_me", token, {
           httpOnly: true,
-          secure: true,
+          secure: false,
           maxAge: 30 * 24 * 60 * 60 * 1000,
         });
 
@@ -79,7 +79,7 @@ const logout = async (req, res) => {
   try {
     await res.clearCookie("remember_me", "", {
       httpOnly: true,
-      secure: true,
+      secure: false,
     });
     return res.json({ message: "Delete cookie successfully...", status: 200 });
   } catch (error) {
