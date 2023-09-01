@@ -20,7 +20,8 @@ export default function StartScreen() {
 
   axios.defaults.withCredentials = true;
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (isEmailValid) {
       return navigate("/login");
     } else {
@@ -69,7 +70,8 @@ export default function StartScreen() {
             <form>
               <div className="startScreen__input-content">
                 <input
-                  id="emailInput"
+                  id="email"
+                  name="emailInput"
                   className={`startScreen__emailInput ${
                     (email !== "" || messageInput !== "") &&
                     (isEmailValid === false ? "not-valid" : "valid")
@@ -103,7 +105,10 @@ export default function StartScreen() {
                   Email address
                 </label>
 
-                <button className="start__getStarted" onClick={handleSubmit}>
+                <button
+                  className="start__getStarted"
+                  onClick={(e) => handleSubmit(e)}
+                >
                   Get Started
                   <svg
                     width="24"

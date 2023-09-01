@@ -7,7 +7,6 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { ReactComponent as NetflixLogo } from "../assets/images/logo.svg";
 import { useAuth } from "../context/AuthContext";
 
-
 export default function Nav() {
   const { currentUser } = useAuth();
   const [showNavBlack, setShowNavBlack] = useState(false);
@@ -64,6 +63,8 @@ export default function Nav() {
             </button>
 
             <input
+              id="search"
+              name="searchInput"
               type="text"
               placeholder="Search"
               onMouseEnter={() => setInputHover(true)}
@@ -82,4 +83,3 @@ export default function Nav() {
     </header>
   );
 }
-

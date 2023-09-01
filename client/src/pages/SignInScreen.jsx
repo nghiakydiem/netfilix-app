@@ -162,6 +162,7 @@ export default function SignInScreen() {
             <div className="signInScreen__email">
               <input
                 id="email"
+                name="emailInput"
                 type="email"
                 className={`inputEmail ${message.email && "border"}`}
                 onFocus={() => setLabel({ ...label, email: true })}
@@ -196,6 +197,7 @@ export default function SignInScreen() {
             <div className="signInScreen__password">
               <input
                 id="password"
+                name="passwordInput"
                 className={`inputPassword ${message.password && "border"}`}
                 type={showPassword ? "text" : "password"}
                 onFocus={() => setLabel({ ...label, password: true })}
@@ -249,6 +251,8 @@ export default function SignInScreen() {
             <div className="signInScreen__help">
               <div className="signInScreen__rememberMe">
                 <input
+                  id="checkbox"
+                  name="checkboxInput"
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}

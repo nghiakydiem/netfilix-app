@@ -52,6 +52,8 @@ const login = async (req, res) => {
         const token = await bcrypt.hash(user._id.toString(), salt);
 
         res.cookie("remember_me", token, {
+          domain: process.env.URL_ORIGIN_KEY,
+          path: "/",
           httpOnly: true,
           secure: true,
           maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -77,6 +79,8 @@ const login = async (req, res) => {
 const logout = async (req, res) => {
   try {
     await res.clearCookie("remember_me", "", {
+      domain: process.env.URL_ORIGIN_KEY,
+      path: "/",
       httpOnly: true,
       secure: true,
     });
