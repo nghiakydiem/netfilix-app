@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function ProfileScreen() {
   const navigate = useNavigate();
   const { currentUser, setUserEvent } = useAuth();
+  
   const avatar = currentUser?.avatar;
 
   const logout = async () => {

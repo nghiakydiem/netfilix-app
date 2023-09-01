@@ -24,7 +24,6 @@ const signup = async (req, res) => {
 const loginWithCookie = async (req, res) => {
   const rememberMeCookie = req.cookies.remember_me;
   const user = await User.findOne({ rememberMe: rememberMeCookie });
-  console.log("user: ", user);
 
   if (user) {
     return res.json({

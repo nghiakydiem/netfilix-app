@@ -1,4 +1,5 @@
 import "../css/StartScreen.css";
+import axios from "axios";
 import Header from "../components/Header";
 import Introduce from "../components/Introduce";
 import Question from "../components/Question";
@@ -8,7 +9,6 @@ import { RiCloseCircleLine } from "react-icons/ri";
 import { useEffect } from "react";
 import { useEmail } from "../context/EmailContext";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 export default function StartScreen() {
   const navigate = useNavigate();
@@ -28,6 +28,11 @@ export default function StartScreen() {
       setMessageInput("Email is required");
     }
   };
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) navigate("/");
+  }, []);
 
   useEffect(() => {
     if (email.length > 0) {

@@ -17,7 +17,7 @@ export default function MyList() {
     const getLikedMovies = async () => {
       try {
         const data = await axios.get(
-          `http://localhost:5000/api/user/${currentUser}/mylist`,
+          `${process.env.REACT_APP_API_ENDPOINT}/api/user/${currentUser}/mylist`,
         );
         setLikedMovies(data.data.linkedMovies);
       } catch (error) {

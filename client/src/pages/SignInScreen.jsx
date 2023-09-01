@@ -107,11 +107,14 @@ export default function SignInScreen() {
   };
 
   useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) navigate("/");
+
     const loginCookie = async () => {
       const res = await axios.get(
         `${process.env.REACT_APP_API_ENDPOINT}/api/user/login`,
       );
-      
+
       if (res.data.status === 200) {
         setUserEvent(res.data.user);
         setMovieListEvent();

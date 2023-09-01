@@ -3,7 +3,7 @@ import { useState, createContext, useContext, useEffect } from "react";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null); 
   
   const setUserEvent = (user) => {
     localStorage.setItem("user", JSON.stringify(user));

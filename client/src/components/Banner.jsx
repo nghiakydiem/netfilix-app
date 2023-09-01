@@ -1,4 +1,4 @@
-import "../css/Banner.css";
+  import "../css/Banner.css";
 import Player from "../components/Player";
 import { useState } from "react";
 import { AiOutlineInfoCircle } from "react-icons/ai";

@@ -71,28 +71,29 @@ export default function Player({ movieId, onClose }) {
     }
   };
 
-  useEffect(() => {
-    // Get information movie
-    (async () => {
-      const movieRes = await getMovieId(movieId);
-      setMovie(movieRes);
-    })(); 
+  const fetchMovie = async (id) => {
+    const movieRes = await getMovieId(id);
+    setMovie(movieRes);
+  };
 
-    const setIconStatusMovie = async (movieId) => {
-      try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_API_ENDPOINT}/api/user/${currentUser}/${movieId}`,
-        );
+  const setIconStatusMovie = async (movieId) => {
+    try {
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_ENDPOINT}/api/user/${currentUser}/${movieId}`,
+      );
 
-        if (res.data.movie) {
-          setMovieStatus({ ...movieStatus, done: true });
-        }
-      } catch (error) {
-        console.error(error);
+      if (res.data.movie) {
+        setMovieStatus({ ...movieStatus, done: true });
       }
-    };
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchMovie(movieId);
     setIconStatusMovie(movieId);
-  }, [movieId, currentUser, movieStatus]);
+  }, [movieId]);
 
   return (
     <section className="player">
