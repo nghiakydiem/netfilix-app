@@ -1,5 +1,4 @@
 import "react-toastify/dist/ReactToastify.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomeScreen from "./pages/HomeScreen";
 import StartScreen from "./pages/StartScreen";
 import ProfileScreen from "./pages/ProfileScreen";
@@ -10,7 +9,9 @@ import MyList from "./pages/MyList";
 import EmailProvider from "./context/EmailContext";
 import PrivateRoutes from "./components/PrivateRoutes";
 import SignInScreen from "./pages/SignInScreen";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import Search from "./pages/Search";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
               <Route path="/movies" element={<Movies />} />
               <Route path="/popular" element={<Popular />} />
               <Route path="/my-list" element={<MyList />} />
+              <Route path="/search" element={<Search />} />
             </Route>
           </Routes>
         </EmailProvider>

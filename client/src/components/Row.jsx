@@ -1,6 +1,7 @@
 import "@splidejs/react-splide/css";
 import "../css/Row.css";
 import Player from "./Player";
+import Motion from "./Motion";
 import { useState } from "react";
 import { SplideSlide, Splide } from "@splidejs/react-splide";
 
@@ -11,7 +12,7 @@ export default function Row({ title, movies }) {
   const [movieId, setMovieId] = useState(null);
 
   return (
-    <>
+    <Motion variantsOption="bottomToTop">
       <section className="row">
         <h2>{title}</h2>
 
@@ -49,6 +50,6 @@ export default function Row({ title, movies }) {
           <Player movieId={movieId} onClose={() => setShowPlayer(false)} />
         )}
       </section>
-    </>
+    </Motion>
   );
 }

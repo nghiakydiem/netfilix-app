@@ -2,12 +2,14 @@ import "../css/SignInScreen.css";
 import axios from "axios";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Motion from "../components/Motion";
 import { toast } from "react-toastify";
 import { useState, useEffect } from "react";
 import { useEmail } from "../context/EmailContext";
 import { useAuth } from "../context/AuthContext";
 import { useMovies } from "../context/MoviesContext";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function SignInScreen() {
   const navigate = useNavigate();
@@ -108,7 +110,7 @@ export default function SignInScreen() {
 
   useEffect(() => {
     const user = localStorage.getItem("user");
-    if (user) navigate("/");
+    if (user !== "null") navigate("/");
 
     const loginCookie = async () => {
       const res = await axios.get(
@@ -142,21 +144,29 @@ export default function SignInScreen() {
   }, [user.email, user.password]);
 
   return (
-    <div className="signInScreen">
-      <div className={"signInScreen__background"}>
+    <motion.div
+      className="signInScreen"
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="signInScreen__background">
         <Header />
 
-        <form className="signInScreen__form">
+        <form id="formLogin" className="signInScreen__form" autoComplete="on">
           <h1>Sign In</h1>
 
           {/*----- Message content -----*/}
-          {showNotification && (
-            <div className="signInScreen__notification">
-              <b>Incorrect password. </b>
-              Please try again or you can&nbsp;
-              <a href="loginHelp">reset your password.</a>
-            </div>
-          )}
+          <Motion variantsOption="opacity" slideMotion={true}>
+            {showNotification && (
+              <div className="signInScreen__notification">
+                <b>Incorrect password. </b>
+                Please try again or you can&nbsp;
+                <a href="loginHelp">reset your password.</a>
+              </div>
+            )}
+          </Motion>
 
           <div className="signInScreen__form-content">
             <div className="signInScreen__email">
@@ -257,7 +267,7 @@ export default function SignInScreen() {
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
                 />
-                <label>Remember me</label>
+                <label htmlFor="checkbox">Remember me</label>
               </div>
 
               <a href="/">Need help?</a>
@@ -281,7 +291,9 @@ export default function SignInScreen() {
         <div className="signInScreen__gradient"></div>
       </div>
 
-      <Footer />
-    </div>
+      <Motion variantsOption="bottomToTop">
+        <Footer />
+      </Motion>
+    </motion.div>
   );
 }

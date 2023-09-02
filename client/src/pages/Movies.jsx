@@ -3,12 +3,19 @@ import Row from "../components/Row";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { useMovies } from "../context/MoviesContext";
+import { motion } from "framer-motion";
 
 export default function Movies() {
   const { movieList } = useMovies();
 
   return (
-    <div className="movies">
+    <motion.div
+      className="movies"
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <Nav />
       <main className="tvShow__container" style={{ marginTop: "6.5rem" }}>
         <Row
@@ -24,6 +31,6 @@ export default function Movies() {
         <Row title="Documentaries" movies={movieList?.movies.documentMovies} />
       </main>
       <Footer />
-    </div>
+    </motion.div>
   );
 }

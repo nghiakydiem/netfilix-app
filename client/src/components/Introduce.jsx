@@ -1,6 +1,6 @@
 import "../css/Introduce.css";
 
-function Introduce({ enjoy, download, watch, kids }) {
+export default function Introduce({ enjoy, download, watch, kids }) {
   return (
     <section className="introduce">
       {enjoy && (
@@ -86,7 +86,7 @@ function Introduce({ enjoy, download, watch, kids }) {
           </div>
         </div>
       )}
-      
+
       {kids && (
         <div className="introduce__kid">
           <div className="introduce__kid-left">
@@ -109,5 +109,3 @@ function Introduce({ enjoy, download, watch, kids }) {
     </section>
   );
 }
-
-export default Introduce;

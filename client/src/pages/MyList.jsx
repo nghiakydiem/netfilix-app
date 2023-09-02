@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import Player from "../components/Player";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { motion } from "framer-motion";
 
 export default function MyList() {
   const { currentUser } = useAuth();
@@ -28,7 +29,13 @@ export default function MyList() {
   }, [currentUser]);
 
   return (
-    <div className="myList">
+    <motion.div
+      className="myList"
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <Nav />
 
       <main className="myList__container">
@@ -57,6 +64,6 @@ export default function MyList() {
       {showPlayer && (
         <Player movieId={movieId} onClose={() => setShowPlayer(false)} />
       )}
-    </div>
+    </motion.div>
   );
 }

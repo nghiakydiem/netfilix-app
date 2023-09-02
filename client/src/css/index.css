@@ -47,8 +47,3 @@ h1 {
 ::-webkit-scrollbar-track {
   background: rgb(24, 23, 23);
 }
-
-/*----- Toast Message -----*/
-.Toastify__toast-icon>svg {
-  fill: var(--toastify-icon-color-success) !important;
-}

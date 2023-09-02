@@ -1,5 +1,6 @@
-  import "../css/Banner.css";
+import "../css/Banner.css";
 import Player from "../components/Player";
+import Motion from "./Motion";
 import { useState } from "react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { FaPlay } from "react-icons/fa";
@@ -20,7 +21,7 @@ export default function Banner() {
   };
 
   return (
-    <>
+    <Motion variantsOption="bottomToTop">
       <div className="banner">
         <h1 className="banner__title">
           {movieBanner?.title ||
@@ -69,6 +70,6 @@ export default function Banner() {
       {showPlayer && (
         <Player movieId={movieBanner.id} onClose={() => setShowPlayer(false)} />
       )}
-    </>
+    </Motion>
   );
 }

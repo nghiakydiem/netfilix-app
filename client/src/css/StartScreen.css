@@ -24,20 +24,20 @@
     z-index: 100;
 }
 
-.startScreen__form>h1 {
+.startScreen__form-h1 {
     margin-bottom: 1.25rem;
     font-size: 3rem;
     font-weight: 900;
     white-space: nowrap;
 }
 
-.startScreen__form>h2 {
+.startScreen__form-h2 {
     font-size: 1.5rem;
     font-weight: 400;
     margin-bottom: 30px;
 }
 
-.startScreen__form>h3 {
+.startScreen__form-h3 {
     font-size: 1.25rem;
     font-weight: 400;
 }

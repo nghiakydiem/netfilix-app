@@ -4,11 +4,13 @@ import Header from "../components/Header";
 import Introduce from "../components/Introduce";
 import Question from "../components/Question";
 import Footer from "../components/Footer";
+import Motion from "../components/Motion";
 import { useState } from "react";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { useEffect } from "react";
 import { useEmail } from "../context/EmailContext";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function StartScreen() {
   const navigate = useNavigate();
@@ -23,6 +25,8 @@ export default function StartScreen() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isEmailValid) {
+      console.log("navigate");
+      setEmailEvent(email);
       return navigate("/login");
     } else {
       document.getElementById("emailInput").focus();
@@ -32,7 +36,7 @@ export default function StartScreen() {
 
   useEffect(() => {
     const user = localStorage.getItem("user");
-    if (user) navigate("/");
+    if (user !== "null") navigate("/");
   }, []);
 
   useEffect(() => {
@@ -43,7 +47,6 @@ export default function StartScreen() {
         if (checkValid) {
           setMessageInput("");
           setIsEmailValid(true);
-          setEmailEvent(email);
         } else {
           setIsEmailValid(false);
           setMessageInput("Please enter a valid email address.");
@@ -54,20 +57,30 @@ export default function StartScreen() {
   }, [email, setEmailEvent]);
 
   return (
-    <div className="startScreen">
+    <motion.div
+      className="startScreen"
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <div className={"startScreen__background"}>
         <Header register={true} />
 
         <main className="startScreen__form">
-          <h1>Unlimited movies, TV shows, and more</h1>
-          <h2>Watch anywhere. Cancel any time</h2>
-          <h3>
+          <h1 className="startScreen__form-h1">
+            Unlimited movies, TV shows, and more
+          </h1>
+          <h2 className="startScreen__form-h2">
+            Watch anywhere. Cancel any time
+          </h2>
+          <h3 className="startScreen__form-h3">
             Ready to watch? Enter your email to create or restart your
             membership.
           </h3>
 
           <div v className="startScreen__input">
-            <form>
+            <form id="formStart" autoComplete="on">
               <div className="startScreen__input-content">
                 <input
                   id="email"
@@ -95,7 +108,7 @@ export default function StartScreen() {
 
                 <label
                   className={`startScreen__input-label ${label && "focus"}`}
-                  htmlFor="emailInput"
+                  htmlFor="email"
                   onBlur={() => {
                     if (!email) {
                       setLabel(false);
@@ -105,10 +118,7 @@ export default function StartScreen() {
                   Email address
                 </label>
 
-                <button
-                  className="start__getStarted"
-                  onClick={(e) => handleSubmit(e)}
-                >
+                <button className="start__getStarted" onClick={handleSubmit}>
                   Get Started
                   <svg
                     width="24"
@@ -143,14 +153,26 @@ export default function StartScreen() {
         <div className="line__bottom"></div>
       </div>
 
-      <Introduce enjoy={true} />
-      <Introduce download={true} />
-      <Introduce watch={true} />
-      <Introduce kids={true} />
+      <Motion variantsOption="bottomToTop">
+        <Introduce enjoy={true} />
+      </Motion>
+      <Motion variantsOption="bottomToTop">
+        <Introduce download={true} />
+      </Motion>
+      <Motion variantsOption="bottomToTop">
+        <Introduce watch={true} />
+      </Motion>
+      <Motion variantsOption="bottomToTop">
+        <Introduce kids={true} />
+      </Motion>
 
-      <Question />
+      <Motion variantsOption="bottomToTop">
+        <Question />
+      </Motion>
 
-      <Footer />
-    </div>
+      <Motion variantsOption="bottomToTop">
+        <Footer />
+      </Motion>
+    </motion.div>
   );
 }

@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import AuthProvider from "./context/AuthContext";
 import MoviesProvider from "./context/MoviesContext";
 import { createRoot } from "react-dom/client";
+import SearchValueProvider from "./context/SearchValueContext";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -13,7 +14,9 @@ root.render(
   <React.StrictMode>
     <AuthProvider>
       <MoviesProvider>
-        <App />
+        <SearchValueProvider>
+          <App />
+        </SearchValueProvider>
       </MoviesProvider>
     </AuthProvider>
   </React.StrictMode>,

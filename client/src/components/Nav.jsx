@@ -1,17 +1,21 @@
 import "../css/Nav.css";
 import Avatar from "./Avatar";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { ReactComponent as NetflixLogo } from "../assets/images/logo.svg";
 import { useAuth } from "../context/AuthContext";
+import { useSearchValue } from "../context/SearchValueContext";
 
 export default function Nav() {
+  const navigate = useNavigate();
   const { currentUser } = useAuth();
+  const { setSearchValueEvent } = useSearchValue();
   const [showNavBlack, setShowNavBlack] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [inputHover, setInputHover] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   // Transition navbar
   const transitionNavBar = () => {
@@ -67,12 +71,20 @@ export default function Nav() {
               name="searchInput"
               type="text"
               placeholder="Search"
+              value={inputValue}
               onMouseEnter={() => setInputHover(true)}
               onMouseLeave={() => setInputHover(false)}
               onBlur={() => {
                 setInputHover(false);
                 setShowSearch(false);
               }}
+              onKeyUp={(e) => {
+                if (e.key === "Enter") {
+                  setSearchValueEvent(inputValue);
+                  navigate("/search")
+                }
+              }}
+              onChange={(e) => setInputValue(e.target.value)}
             />
           </div>
 

@@ -3,12 +3,19 @@ import Nav from "../components/Nav";
 import Row from "../components/Row";
 import Footer from "../components/Footer";
 import { useMovies } from "../context/MoviesContext";
+import { motion } from "framer-motion";
 
 export default function Popular() {
   const { movieList } = useMovies();
 
   return (
-    <div className="popular">
+    <motion.div
+      className="popular"
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <Nav />
 
       <main className="popular__container" style={{ marginTop: "6.5rem" }}>
@@ -28,6 +35,6 @@ export default function Popular() {
       </main>
 
       <Footer />
-    </div>
+    </motion.div>
   );
 }
