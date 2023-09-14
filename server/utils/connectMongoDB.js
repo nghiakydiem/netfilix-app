@@ -1,7 +1,4 @@
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-
-dotenv.config();
 
 const connectMongoDB = async () => {
   try {
@@ -12,8 +9,4 @@ const connectMongoDB = async () => {
   }
 };
 
-connectMongoDB();
-
-module.exports = {
-  connectMongoDB,
-};
+module.exports = connectMongoDB;

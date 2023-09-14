@@ -81,7 +81,7 @@ export default function Nav() {
               onKeyUp={(e) => {
                 if (e.key === "Enter") {
                   setSearchValueEvent(inputValue);
-                  navigate("/search")
+                  navigate("/search");
                 }
               }}
               onChange={(e) => setInputValue(e.target.value)}

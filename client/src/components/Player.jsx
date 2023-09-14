@@ -19,6 +19,7 @@ export default function Player({ movieId, onClose }) {
     [movie],
   );
 
+  console.log(movie)
   const addMovieToList = async () => {
     try {
       setMovieStatus({ ...movieStatus, loading: true });
@@ -89,6 +90,8 @@ export default function Player({ movieId, onClose }) {
       console.error(error);
     }
   };
+
+  console.log(movie)
 
   useEffect(() => {
     fetchMovie(movieId);

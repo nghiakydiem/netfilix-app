@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import axios from "../axios";
-import { motion } from "framer-motion";
-import { useSearchValue } from "../context/SearchValueContext";
 import Player from "../components/Player";
 import Motion from "../components/Motion";
+import { motion } from "framer-motion";
+import { useSearchValue } from "../context/SearchValueContext";
 
 export default function Search() {
   const base_url = "https://image.tmdb.org/t/p/original";

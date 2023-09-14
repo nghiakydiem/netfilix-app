@@ -1,4 +1,5 @@
 import "react-toastify/dist/ReactToastify.css";
+import "@splidejs/react-splide/css";
 import HomeScreen from "./pages/HomeScreen";
 import StartScreen from "./pages/StartScreen";
 import ProfileScreen from "./pages/ProfileScreen";
@@ -9,9 +10,9 @@ import MyList from "./pages/MyList";
 import EmailProvider from "./context/EmailContext";
 import PrivateRoutes from "./components/PrivateRoutes";
 import SignInScreen from "./pages/SignInScreen";
+import Search from "./pages/Search";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import Search from "./pages/Search";
 
 export default function App() {
   return (

@@ -3,13 +3,16 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const connectMongoDB = require("./utils/connectMongoDB");
+const authRouter = require("./routes/authRoutes");
 const userRouter = require("./routes/userRoutes");
-const { connectMongoDB } = require("./connectMongoDB");
+const movieRouter = require("./routes/movieRoutes");
 
 require("dotenv").config();
 
 const app = express();
 
+// Configure
 app.use(express.json());
 app.use(
   cors({
@@ -32,21 +35,14 @@ app.use(
   }),
 );
 
-// CONNECT TO MONGODB
 connectMongoDB();
 
-// SET PATH STATIC
+// Routes
+app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
-app.get("/api/login", (req, res) => {
-  res.cookie("remember", "login-token", {
-    secure: false,
-    maxAge: 2000,
-  });
-  return res.end("Welcome to website");
-});
+app.use("/api/movie", movieRouter);
 
-// RUN SERVER
-app.listen(process.env.PORT, function (error) {
+app.listen(process.env.PORT, (error) => {
   if (error) {
     console.error(error);
   } else {

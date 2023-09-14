@@ -1,6 +1,19 @@
 const mongoose = require("mongoose");
+const Movie = require("./Movie");
 
 const userSchema = new mongoose.Schema({
+  firstName: {
+    type: String,
+    require: true,
+  },
+  lastName: {
+    type: String,
+    require: true,
+  },
+  profileUrl: {
+    type: String,
+    default: "",
+  },
   email: {
     type: String,
     unique: true,
@@ -12,12 +25,17 @@ const userSchema = new mongoose.Schema({
   },
   likedMovies: {
     type: Array,
+    children: Movie,
     default: [],
   },
-  rememberMe: {
+  accessToken: {
     type: String,
     default: "",
   },
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 module.exports = mongoose.model("users", userSchema);

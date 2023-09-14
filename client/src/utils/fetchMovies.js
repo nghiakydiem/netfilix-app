@@ -42,19 +42,14 @@ export const fetchMovies = async () => {
 
 export const fetchTvShows = async () => {
   try {
-    const [
-      trendingTvShows,
-      topRateTvShows,
-      comedyTvShows,
-      romanceTvShows,
-      documentTvShows,
-    ] = await Promise.all([
-      axios.get(TvShowRequests.fetchTrending),
-      axios.get(TvShowRequests.fetchTopRated),
-      axios.get(TvShowRequests.fetchComedies),
-      axios.get(TvShowRequests.fetchRomance),
-      axios.get(TvShowRequests.fetchDocumentaries),
-    ]);
+    const [trendingTvShows, topRateTvShows, comedyTvShows, romanceTvShows, documentTvShows] =
+      await Promise.all([
+        axios.get(TvShowRequests.fetchTrending),
+        axios.get(TvShowRequests.fetchTopRated),
+        axios.get(TvShowRequests.fetchComedies),
+        axios.get(TvShowRequests.fetchRomance),
+        axios.get(TvShowRequests.fetchDocumentaries),
+      ]);
 
     const TvShowList = {
       trendingTvShows: trendingTvShows.data.results,
@@ -72,13 +67,12 @@ export const fetchTvShows = async () => {
 
 export const fetchPopular = async () => {
   try {
-    const [newTVShows, newMovies, popularTvShows, popularMovies] =
-      await Promise.all([
-        axios.get(PopularRequests.fetchNewTVShows),
-        axios.get(PopularRequests.fetchNewMovies),
-        axios.get(PopularRequests.fetchPopularTvShows),
-        axios.get(PopularRequests.fetchPopularMovies),
-      ]);
+    const [newTVShows, newMovies, popularTvShows, popularMovies] = await Promise.all([
+      axios.get(PopularRequests.fetchNewTVShows),
+      axios.get(PopularRequests.fetchNewMovies),
+      axios.get(PopularRequests.fetchPopularTvShows),
+      axios.get(PopularRequests.fetchPopularMovies),
+    ]);
 
     const PopularList = {
       newTVShows: newTVShows.data.results,
